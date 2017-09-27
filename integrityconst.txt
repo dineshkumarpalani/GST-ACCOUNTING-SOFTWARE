@@ -1,0 +1,72 @@
+INTEGRITY CONSTRAINTS:
+
+SQL> create table customer3(custid int,username varchar(20),emailid varchar(30),address varchar(20),primary key(custid));
+
+Table created.
+SQL> ALTER TABLE CUSTOMER3 DROP PRIMARY KEY;
+
+Table altered.
+
+SQL> desc customer3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTID                                             NUMBER(38)
+ USERNAME                                           VARCHAR2(20)
+ EMAILID                                            VARCHAR2(30)
+ ADDRESS                                            VARCHAR2(20)
+
+SQL> ALTER TABLE customer3 ADD unique(custid);
+
+Table altered.
+
+SQL> desc customer3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTID                                             NUMBER(38)
+ USERNAME                                           VARCHAR2(20)
+ EMAILID                                            VARCHAR2(30)
+ ADDRESS                                            VARCHAR2(20)
+
+
+SQL> ALTER TABLE customer3 MODIFY username varchar(25) NOT NULL;
+
+Table altered.
+
+SQL> desc customer3;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTID                                             NUMBER(38)
+ USERNAME                                  NOT NULL VARCHAR2(25)
+ EMAILID                                            VARCHAR2(30)
+ ADDRESS                                            VARCHAR2(20)
+
+
+SQL> insert into product values(1,'maggi',50);
+
+1 row created.
+
+SQL> insert into product values(2,'diarymilk',150);
+
+1 row created.
+
+SQL> insert into product values(3,'lays',30);
+
+1 row created.
+
+SQL> select * from product;
+
+       PID NAME                  UNITPRICE
+---------- -------------------- ----------
+         2 diarymilk                   150
+         3 lays                         30
+SQL> ALTER TABLE product ADD check(unitprice>10);
+
+Table altered.
+
+SQL> select * from product;
+
+       PID NAME                  UNITPRICE
+---------- -------------------- ----------
+         2 diarymilk                   150
+         3 lays                         30
+
